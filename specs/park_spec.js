@@ -11,6 +11,9 @@ describe('Park', function(){
     park = new Park();
     velociraptor = new Dinosaur('Velociraptor');
     trex = new Dinosaur('Tyrannosaurus');
+    tricer = new Dinosaur('Triceratops');
+    trex.numberOfOffspring = 3;
+    tricer.numberOfOffspring = 4;
   });
 
   it('enclosure should start empty', function(){
@@ -34,6 +37,15 @@ describe('Park', function(){
     const countAfter = park.dinosaurCountInEnclosure();
     assert.strictEqual(countAfter, 1);
     assert(!park.enclosure.includes(trex));
+  });
+
+  it('should get all the dinosaurs with an offspring count of more than 2', function(){
+    park.addDinosaur(velociraptor);
+    park.addDinosaur(trex);
+    park.addDinosaur(tricer);
+    const foundDinosaurs = park.getAllDinosaursForOffspringCount(2);
+    assert.strictEqual(foundDinosaurs.length, 2);
+
   });
 
 });

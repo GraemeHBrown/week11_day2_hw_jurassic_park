@@ -15,4 +15,9 @@ Park.prototype.removeDinosaur = function (type) {
   this.enclosure = newarray;
 };
 
+Park.prototype.getAllDinosaursForOffspringCount = function (count) {
+  foundDinosaurs = this.enclosure.filter(s => s.numberOfOffspring >2);
+  return foundDinosaurs;
+};
+
 module.exports = Park;
